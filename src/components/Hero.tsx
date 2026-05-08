@@ -52,7 +52,7 @@ function ProfileCard() {
               </div>
             ) : (
               <img
-                src="/profile.jpg"
+                src={`${import.meta.env.BASE_URL}profile.jpg`}
                 alt="Herouala Mohamed"
                 className="w-full h-full object-cover object-top"
                 onError={() => setImgError(true)}
@@ -276,7 +276,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="/cv.pdf"
+                href={`${import.meta.env.BASE_URL}cv.pdf`}
                 download="Herouala_Mohamed_CV.pdf"
                 className={`
                   group inline-flex items-center justify-center gap-2.5
