@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   THEME TRANSITION — smooth color changes
+───────────────────────────────────────── */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+/* Don't animate transforms/opacity with the theme transition */
+.motion-safe\:transition-none { transition: none !important; }
+
+/* ─────────────────────────────────────────
+   BASE
+───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: hidden;
+  /* Prevent font size inflation on iOS orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.light body {
+  background: #f8fafc;
+  color: #111827;
+}
+
+/* ─────────────────────────────────────────
+   PULSE DOT — used in Hero live badge
+───────────────────────────────────────── */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.7); }
+}
+
+/* ─────────────────────────────────────────
+   SHINE ANIMATION
+───────────────────────────────────────── */
+@keyframes shine {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.text-shine {
+  background: linear-gradient(
+    90deg,
+    #64CEFB 0%,
+    #64CEFB 22%,
+    #c8edff 40%,
+    #ffffff 50%,
+    #c8edff 60%,
+    #64CEFB 78%,
+    #64CEFB 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  will-change: background-position;
+}
+
+/* Shine stays legible on light backgrounds */
+.light .text-shine {
+  background: linear-gradient(
+    90deg,
+    #0ea5e9 0%,
+    #0ea5e9 22%,
+    #38bdf8 40%,
+    #0284c7 50%,
+    #38bdf8 60%,
+    #0ea5e9 78%,
+    #0ea5e9 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─────────────────────────────────────────
+   VIDEO — force GPU compositing layer
+───────────────────────────────────────── */
+video {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 206, 251, 0.15);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 206, 251, 0.32);
+}
+
+/* ─────────────────────────────────────────
+   FOCUS VISIBLE — keyboard navigation
+───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(100, 206, 251, 0.65);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY HELPERS
+───────────────────────────────────────── */
+.heading-balance {
+  text-wrap: balance;
+}
+
+/* ─────────────────────────────────────────
+   IMAGES / MEDIA
+───────────────────────────────────────── */
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ─────────────────────────────────────────
+   CARD HOVER — premium shadow system
+   Used via Tailwind arbitrary shadow classes
+   but defined here for cross-browser compat
+───────────────────────────────────────── */
+.card-hover {
+  transition: border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease;
+}
+.card-hover:hover {
+  box-shadow:
+    0 0 0 1px rgba(100, 206, 251, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION — accessibility
+   Disables all Framer Motion & CSS animations
+   for users who prefer reduced motion.
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  /* Keep shine text readable when animation is killed */
+  .text-shine {
+    animation: none;
+    /* Fall back to flat cyan */
+    background: #64CEFB;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* ─────────────────────────────────────────
+   LIGHT MODE GLOW BOOST — restore the blue
+   ambient effect that white backgrounds wash out.
+   bg-[#64CEFB]/[0.03] is invisible on white;
+   override background-color to a visible alpha.
+───────────────────────────────────────── */
+@keyframes glowBreath {
+  0%, 100% { opacity: 0.72; }
+  50%       { opacity: 1; }
+}
+
+.light .glow-orb {
+  background-color: rgba(100, 206, 251, 0.26) !important;
+  animation: glowBreath 7s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE GLOW PERF — hide expensive blurs
+   on small viewports to protect frame rate
+───────────────────────────────────────── */
+@media (max-width: 639px) {
+  .glow-orb {
+    display: none !important;
+  }
+}
