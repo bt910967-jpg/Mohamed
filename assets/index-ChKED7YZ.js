@@ -245,7 +245,7 @@ Error generating stack: `+s.message+`
             lg:w-[320px] lg:h-[320px]
             rounded-full p-[3px]
             shadow-[0_0_60px_rgba(100,206,251,0.22),0_24px_60px_rgba(0,0,0,0.65)]
-          `,style:{background:"linear-gradient(160deg, rgba(100,206,251,0.45) 0%, rgba(100,206,251,0.08) 60%, rgba(100,206,251,0.18) 100%)"},children:f.jsx("div",{className:`w-full h-full rounded-full overflow-hidden ${n?"bg-[#08080f]":"bg-slate-100"}`,children:r?f.jsx("div",{className:"w-full h-full flex items-center justify-center bg-gradient-to-br from-[#64CEFB]/[0.12] to-transparent",children:f.jsx("span",{className:"text-[#64CEFB] font-black text-4xl sm:text-5xl tracking-tight",children:"HM"})}):f.jsx("img",{src:"/profile.jpg",alt:"Herouala Mohamed",className:"w-full h-full object-cover object-top",onError:()=>i(!0)})})}),f.jsxs("div",{className:`
+          `,style:{background:"linear-gradient(160deg, rgba(100,206,251,0.45) 0%, rgba(100,206,251,0.08) 60%, rgba(100,206,251,0.18) 100%)"},children:f.jsx("div",{className:`w-full h-full rounded-full overflow-hidden ${n?"bg-[#08080f]":"bg-slate-100"}`,children:r?f.jsx("div",{className:"w-full h-full flex items-center justify-center bg-gradient-to-br from-[#64CEFB]/[0.12] to-transparent",children:f.jsx("span",{className:"text-[#64CEFB] font-black text-4xl sm:text-5xl tracking-tight",children:"HM"})}):f.jsx("img",{src:"/Mohamed/profile.jpg",alt:"Herouala Mohamed",className:"w-full h-full object-cover object-top",onError:()=>i(!0)})})}),f.jsxs("div",{className:`
           absolute bottom-2 right-2
           sm:bottom-4 sm:right-4
           flex items-center gap-1.5
@@ -294,7 +294,7 @@ Error generating stack: `+s.message+`
                   hover:shadow-[0_0_48px_rgba(100,206,251,0.38)]
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#64CEFB] focus-visible:ring-offset-2
                   ${n?"focus-visible:ring-offset-black":"focus-visible:ring-offset-slate-50"}
-                `,children:[e.hero.contactBtn,f.jsx(Zw,{className:"w-4 h-4 flex-shrink-0 transition-transform duration-[250ms] group-hover:translate-x-1 rtl:rotate-180","aria-hidden":"true"})]}),f.jsxs("a",{href:"/cv.pdf",download:"Herouala_Mohamed_CV.pdf",className:`
+                `,children:[e.hero.contactBtn,f.jsx(Zw,{className:"w-4 h-4 flex-shrink-0 transition-transform duration-[250ms] group-hover:translate-x-1 rtl:rotate-180","aria-hidden":"true"})]}),f.jsxs("a",{href:"/Mohamed/cv.pdf",download:"Herouala_Mohamed_CV.pdf",className:`
                   group inline-flex items-center justify-center gap-2.5
                   w-full sm:w-auto
                   px-6 sm:px-7 py-3 sm:py-3.5 rounded-full
